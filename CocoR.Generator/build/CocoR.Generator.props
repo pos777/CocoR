@@ -1,0 +1,24 @@
+<Project>
+
+  <PropertyGroup>
+    <CocoRBuildTasksLocation>$(MSBuildThisFileDirectory)..\tasks\netstandard2.0\$(MSBuildThisFileName).dll</CocoRBuildTasksLocation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvailableItemName Include="CocoR" />
+    <CompilerVisibleItemMetadata Include="CocoR" MetadataName="Namespace" />
+    <CompilerVisibleItemMetadata Include="CocoR" MetadataName="FrameFilesDirectory" />
+    <CompilerVisibleItemMetadata Include="CocoR" MetadataName="TraceString" />
+    <CompilerVisibleItemMetadata Include="CocoR" MetadataName="OutputDirectory" />
+    <CompilerVisibleItemMetadata Include="CocoR" MetadataName="Lines" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(EnableDefaultItems)' == 'true' ">
+    <CocoR Include="**/*.atg" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)">
+      <Namespace Condition=" '$(RootNamespace)' == '' ">$([MSBuild]::ValueOrDefault('%(RecursiveDir)%(FileName)', '').Replace(' ', '_').Replace('/', '.').Replace('\', '.'))</Namespace>
+      <Namespace Condition=" '$(RootNamespace)' != '' ">$(RootNamespace).$([MSBuild]::ValueOrDefault('%(RecursiveDir)%(FileName)', '').Replace(' ', '_').Replace('/', '.').Replace('\', '.'))</Namespace>
+      <OutputDirectory>$([System.IO.Path]::Combine($(IntermediateOutputPath),'CocoR', %(RecursiveDir), %(FileName)))</OutputDirectory>
+    </CocoR>
+  </ItemGroup>
+
+</Project>

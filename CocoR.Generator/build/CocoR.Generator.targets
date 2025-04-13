@@ -1,0 +1,47 @@
+<Project>
+
+  <ItemGroup Condition=" '$(EnableDefaultItems)' == 'true' And '$(EnableDefaultNoneItems)' == 'true' ">
+    <None Remove="**/*.atg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CocoR Update="**/*.atg">
+      <FrameFilesDirectory Condition=" '%(FrameFilesDirectory)' == '' ">%(RecursiveDir)</FrameFilesDirectory>
+      <_CopyrightFrameFile>$([System.IO.Path]::Combine(%(FrameFilesDirectory),'Copyright.frame'))</_CopyrightFrameFile>
+      <_CopyrightFrameFile Condition="!Exists(%(_CopyrightFrameFile))"></_CopyrightFrameFile>
+      <_ScannerFrameFile>$([System.IO.Path]::Combine(%(FrameFilesDirectory),'Scanner.frame'))</_ScannerFrameFile>
+      <_ParserFrameFile>$([System.IO.Path]::Combine(%(FrameFilesDirectory),'Parser.frame'))</_ParserFrameFile>
+
+      <OutputDirectory Condition=" '%(OutputDirectory)' == '' ">%(RecursiveDir)</OutputDirectory>
+      <_ScannerFile>$([System.IO.Path]::Combine(%(OutputDirectory),'Scanner.cs'))</_ScannerFile>
+      <_ParserFile>$([System.IO.Path]::Combine(%(OutputDirectory),'Parser.cs'))</_ParserFile>
+    </CocoR>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_CocoRInputs Include="@(CocoR)" />
+    <_CocoRInputs Include="@(CocoR->'%(_CopyrightFrameFile)')" />
+    <_CocoRInputs Include="@(CocoR->'%(_ScannerFrameFile)')" />
+    <_CocoRInputs Include="@(CocoR->'%(_ParserFrameFile)')" />
+    <_CocoROutputs Include="@(CocoR->'%(_ScannerFile)')" />
+    <_CocoROutputs Include="@(CocoR->'%(_ParserFile)')" />
+    <Compile Remove="@(_CocoROutputs)" />
+    <Compile Include="@(_CocoROutputs)" />
+  </ItemGroup>
+
+  <UsingTask TaskName="MSBuildTask.GenerateCocoR" AssemblyFile="$(CocoRBuildTasksLocation)" />
+
+  <Target Name="GenerateCocoR"
+          BeforeTargets="BeforeCompile;CoreCompile"
+          AfterTargets="PrepareForBuild"
+          Condition="@(CocoR) != ''"
+          Inputs="@(_CocoRInputs)"
+          Outputs="@(_CocoROutputs)">
+
+    <MakeDir Directories="@(CocoR->'%(OutputDirectory)')" />
+
+    <GenerateCocoR GrammarFiles="@(CocoR)" />
+
+  </Target>
+
+</Project>

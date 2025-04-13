@@ -11,15 +11,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0;net6.0;net5.0;netcoreapp3.1</TargetFrameworks>
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>coco</ToolCommandName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+    <NoWarn>NU5100</NoWarn>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../license.txt" Pack="true" Visible="false" PackagePath="" />
+    <Content Include="../license.txt" Visible="false" PackagePath="" />
+    <Content Include="build/CocoR.Generator.props" PackagePath="build" />
+    <Content Include="build/CocoR.Generator.targets" PackagePath="build" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.0.0" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

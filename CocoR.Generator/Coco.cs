@@ -45,23 +45,13 @@ using System.IO;
 
 namespace at.jku.ssw.Coco {
 
-public class Coco {
+public static class Coco {
 		
-	public static int Main (string[] arg) {
+	public static int Generate (string srcName, string nsName, string frameDir, string ddtString, string outDir, bool emitLines) {
 		Console.WriteLine("Coco/R (Apr 19, 2011)");
-		string srcName = null, nsName = null, frameDir = null, ddtString = null,
-		traceFileName = null, outDir = null;
-		bool emitLines = false;
+		string traceFileName = null;
 		int retVal = 1;
-		for (int i = 0; i < arg.Length; i++) {
-			if (arg[i] == "-namespace" && i < arg.Length - 1) nsName = arg[++i].Trim();
-			else if (arg[i] == "-frames" && i < arg.Length - 1) frameDir = arg[++i].Trim();
-			else if (arg[i] == "-trace" && i < arg.Length - 1) ddtString = arg[++i].Trim();
-			else if (arg[i] == "-o" && i < arg.Length - 1) outDir = arg[++i].Trim();
-			else if (arg[i] == "-lines") emitLines = true;
-			else srcName = arg[i];
-		}
-		if (arg.Length > 0 && srcName != null) {
+		if (srcName != null) {
 			try {
 				string srcDir = Path.GetDirectoryName(srcName);
 				
