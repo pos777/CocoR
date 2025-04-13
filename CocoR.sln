@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coco", "Coco\Coco.csproj", "{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoR.Generator", "CocoR.Generator\CocoR.Generator.csproj", "{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
