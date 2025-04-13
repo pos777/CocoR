@@ -314,7 +314,6 @@ class Generator {
 	public StreamWriter OpenGen(string target) {
 		string fn = Path.Combine(tab.outDir, target);
 		try {
-			if (File.Exists(fn)) File.Copy(fn, fn + ".old", true);
 			gen = new StreamWriter(new FileStream(fn, FileMode.Create)); /* pdt */
 		} catch (IOException) {
 			throw new FatalError("Cannot generate file: " + fn);
