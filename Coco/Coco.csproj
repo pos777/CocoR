@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="license.txt" Pack="true" PackagePath="license.txt" />
+    <None Include="../license.txt" Pack="true" PackagePath="license.txt" />
   </ItemGroup>
 
 </Project>
