@@ -7,6 +7,7 @@
     <Copyright>(c) 1990, 2005 Hanspeter Moessenboeck, University of Linz</Copyright>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageProjectUrl>https://www.ssw.uni-linz.ac.at/Research/Projects/Coco/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/pos777/CocoR</RepositoryUrl>
   </PropertyGroup>
 
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <Content Include="../license.txt" Visible="false" PackagePath="" />
+    <Content Include="../README.md" Visible="false" PackagePath=""/>
     <Content Include="build/CocoR.Generator.props" PackagePath="build" />
     <Content Include="build/CocoR.Generator.targets" PackagePath="build" />
   </ItemGroup>
