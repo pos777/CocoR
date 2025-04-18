@@ -27,6 +27,7 @@ Coco/R itself) does not fall under the GNU General Public License.
 -------------------------------------------------------------------------*/
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Collections;
 
@@ -291,8 +292,12 @@ public class Tab {
 		trace.WriteLine();
 		trace.WriteLine("Literal Tokens:");
 		trace.WriteLine("--------------");
-		foreach (DictionaryEntry e in literals) {
-			trace.WriteLine("_" + ((Symbol)e.Value).name + " = " + e.Key + ".");
+		var entries = literals
+			.OfType<DictionaryEntry>()
+			.Select(x => (Name: ((Symbol)x.Value).name, x.Key))
+			.OrderBy(x => x.Name);
+		foreach (var e in entries) {
+			trace.WriteLine("_" + e.Name + " = " + e.Key + ".");
 		}
 		trace.WriteLine();
 	}
@@ -1101,7 +1106,7 @@ public class Tab {
 		foreach (Symbol sym in nonterminals) {
 			if (!visited[sym.n]) {
 				ok = false;
-				errors.Warning("  " + sym.name + " cannot be reached");
+				errors.SemErr("  " + sym.name + " cannot be reached");
 			}
 		}
 		return ok;

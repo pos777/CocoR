@@ -1,7 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoR.Generator", "CocoR.Generator\CocoR.Generator.csproj", "{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoR.Tests", "CocoR.Tests\CocoR.Tests.csproj", "{FD579BA5-1897-48C5-A262-374BBAF06346}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +16,15 @@ Global
 		{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC13D660-2F2A-435B-B3D0-74BD2CE3917B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD579BA5-1897-48C5-A262-374BBAF06346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD579BA5-1897-48C5-A262-374BBAF06346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD579BA5-1897-48C5-A262-374BBAF06346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD579BA5-1897-48C5-A262-374BBAF06346}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {757784BC-6EF3-483F-8E91-208B7A27748F}
 	EndGlobalSection
 EndGlobal
