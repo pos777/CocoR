@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Content Include="../license.txt" Visible="false" PackagePath="" />
-    <Content Include="../README.md" Visible="false" PackagePath=""/>
+    <Content Include="../README.md" Visible="false" PackagePath="" />
     <Content Include="build/CocoR.Generator.props" PackagePath="build" />
     <Content Include="build/CocoR.Generator.targets" PackagePath="build" />
   </ItemGroup>

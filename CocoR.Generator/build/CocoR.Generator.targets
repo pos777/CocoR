@@ -19,14 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_CocoRInputs Include="$(MSBuildProjectFile)" />
     <_CocoRInputs Include="@(CocoR)" />
     <_CocoRInputs Include="@(CocoR->'%(_CopyrightFrameFile)')" />
     <_CocoRInputs Include="@(CocoR->'%(_ScannerFrameFile)')" />
     <_CocoRInputs Include="@(CocoR->'%(_ParserFrameFile)')" />
     <_CocoROutputs Include="@(CocoR->'%(_ScannerFile)')" />
     <_CocoROutputs Include="@(CocoR->'%(_ParserFile)')" />
-    <Compile Remove="@(_CocoROutputs)" />
-    <Compile Include="@(_CocoROutputs)" />
   </ItemGroup>
 
   <UsingTask TaskName="MSBuildTask.GenerateCocoR" AssemblyFile="$(CocoRBuildTasksLocation)" />
@@ -41,6 +40,17 @@
     <MakeDir Directories="@(CocoR->'%(OutputDirectory)')" />
 
     <GenerateCocoR GrammarFiles="@(CocoR)" />
+
+  </Target>
+
+  <Target Name="AfterGenerateCocoR"
+          BeforeTargets="BeforeCompile;CoreCompile"
+          AfterTargets="GenerateCocoR">
+
+    <ItemGroup>
+      <_CocoRCompile Include="@(_CocoROutputs)" Exclude="@(Compile)" />
+      <Compile Include="@(_CocoRCompile)" />
+    </ItemGroup>
 
   </Target>
 
