@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Description>The compiler generator Coco/R</Description>
     <Authors>Hanspeter Mössenböck, Markus Löberbauer, Albrecht Wöß</Authors>
     <Copyright>(c) 1990, 2005 Hanspeter Moessenboeck, University of Linz</Copyright>
